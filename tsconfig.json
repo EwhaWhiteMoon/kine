@@ -1,0 +1,14 @@
+{
+  "include": [
+    "src/*.ts"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    //"sourceMap": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "es2015",
+    "module": "commonjs"
+  }
+}

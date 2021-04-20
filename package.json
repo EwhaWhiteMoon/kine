@@ -1,0 +1,14 @@
+{
+  "name": "kine1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "tsc": "tsc",
+    "browserify": "browserify ./dist/app.js -o app.js",
+    "test": "tsc && npm run browserify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
