@@ -35,6 +35,16 @@ class Ball {
                     || (this.y - Ball.r < obj.y + obj.height && obj.y + obj.height < this.y + Ball.r))) {
                 this.vel.y *= -1;
             }
+            if (obj.y < this.y && this.y < obj.y + obj.height
+                && ((this.x - Ball.r < obj.x && obj.x < this.x + Ball.r)
+                    || (this.x - Ball.r < obj.x + obj.width && obj.x + obj.width < this.x + Ball.r))) {
+                this.vel.x *= -1;
+            }
+            while (obj.x < this.x + Ball.r && this.x - Ball.r < obj.x + obj.width
+                && obj.y < this.y + Ball.r && this.y - Ball.r < obj.y + obj.height) {
+                this.move(this.vel);
+                this.kick(this.acc);
+            }
         }
     }
     frame(box) {
@@ -84,13 +94,15 @@ class Block {
         ctx.fillText(`x:${this.x} ~ ${this.x + this.width}, y:${this.y} ~ ${this.y + this.height}`, this.x, this.y - 15);
     }
 }
-const mBox = new Box(ctx, 300, 300);
+const mBox = new Box(ctx, 600, 600);
 const ball1 = new Ball(150, 150);
-ball1.accel(new vector_1.Vector(0, 0.1));
+ball1.accel(new vector_1.Vector(0.01, 0.1));
 ball1.kick(new vector_1.Vector(3, 0));
 const block1 = new Block(50, 200, 150, 15);
+const block2 = new Block(150, 200, 300, 80);
 mBox.addObj(ball1);
 mBox.addObj(block1);
+mBox.addObj(block2);
 let i = 1;
 function main() {
     mBox.frame();
